@@ -36,4 +36,22 @@ export class UserController {
   async show(@Param() param) {
     return { user: {}, param };
   }
+
+  @Put(':id')
+  async update(@Body() body, @Param() params) {
+    return {
+      method: 'put',
+      body,
+      params,
+    };
+  }
+
+  @Patch(':id')
+  async updatePartial(@Body() body, @Param() params) {
+    return {
+      method: 'patch',
+      body,
+      params,
+    };
+  }
 }
