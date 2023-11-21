@@ -25,32 +25,12 @@ export class UserController {
 
   @Get()
   async list() {
-    return {
-      users: [
-        {
-          name: 'user1',
-          email: 'user1@gmail.com',
-        },
-        {
-          name: 'user2',
-          email: 'user2@gmail.com',
-        },
-        {
-          name: 'user3',
-          email: 'user3@gmail.com',
-        },
-        ,
-        {
-          name: 'user4',
-          email: 'user4@gmail.com',
-        },
-      ],
-    };
+    return this.userService.list();
   }
 
   @Get(':id')
   async show(@Param('id', ParseIntPipe) id: number) {
-    return { user: {}, id };
+    return this.userService.show(id);
   }
 
   @Put(':id')
