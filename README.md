@@ -71,3 +71,13 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+# Docker Command
+
+- Command to create mysql container
+- user: user
+- user password: 12345
+- db name: dbapi
+- db password: 12345
+
+`docker run -d -p 3306:3306 --name nestjs-mysql -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_DATABASE=dbapi -e MYSQL_USER=user -e MYSQL_PASSWORD=12345 mysql:latest`
