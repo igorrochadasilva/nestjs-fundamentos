@@ -81,3 +81,7 @@ Nest is [MIT licensed](LICENSE).
 - db password: 12345
 
 `docker run -d -p 3306:3306 --name nestjs-mysql -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_DATABASE=dbapi -e MYSQL_USER=user -e MYSQL_PASSWORD=12345 mysql:latest`
+
+# JWT Module
+
+- installed `@nestjs/jwt` to configure auth
