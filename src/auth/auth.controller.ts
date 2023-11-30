@@ -18,6 +18,11 @@ export class AuthController {
     return this.authService.login(email, password);
   }
 
+  @Post('me')
+  async me(@Body() { token }) {
+    return this.authService.checkToken(token);
+  }
+
   @Post('register')
   async register(@Body() body: AuthRegisterDTO) {
     return this.authService.register(body);
