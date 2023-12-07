@@ -4,7 +4,7 @@ import { ROLES_KEY } from 'src/decorators/roles.decorator';
 import { Role } from 'src/enums/role.enum';
 
 @Injectable()
-//the roleguard will be responsable to
+//the roleguard will be responsable to identify the role of the user, if user is admin or not
 export class RoleGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
 
@@ -17,10 +17,11 @@ export class RoleGuard implements CanActivate {
     if (!requiredRoles) {
       return true;
     }
+
     const { user } = context.switchToHttp().getRequest();
 
-    console.log({ requiredRoles, user });
+    const rolesFiltered = requiredRoles.filter((role) => role === user.role);
 
-    return true;
+    return rolesFiltered.length > 0;
   }
 }
