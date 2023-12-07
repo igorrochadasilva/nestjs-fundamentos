@@ -4,7 +4,7 @@ import { ROLES_KEY } from 'src/decorators/roles.decorator';
 import { Role } from 'src/enums/role.enum';
 
 @Injectable()
-//the guard will
+//the roleguard will be responsable to
 export class RoleGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
 

@@ -1,5 +1,5 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
-import { Observable } from 'rxjs';
+
 import { AuthService } from 'src/auth/auth.service';
 import { UserService } from 'src/user/user.service';
 
@@ -7,6 +7,7 @@ import { UserService } from 'src/user/user.service';
 //the guard will take the authorization from the header
 export class AuthGuard implements CanActivate {
   constructor(
+    //@Inject(forwardRef(() => AuthService)) -> form to fix the circular dependency
     private readonly authService: AuthService,
     private readonly userService: UserService,
   ) {}
