@@ -5,10 +5,12 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { AuthMmodule } from './auth/auth.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { ConfigModule } from '@nestjs/config';
 
 //Thorttlermodule used to limit the number of requests
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     ThrottlerModule.forRoot([
       {
         ttl: 60,
