@@ -6,6 +6,8 @@ import { UserModule } from './user/user.module';
 import { AuthMmodule } from './auth/auth.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule } from '@nestjs/config';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
 
 //Thorttlermodule used to limit the number of requests
 @Module({
@@ -19,6 +21,27 @@ import { ConfigModule } from '@nestjs/config';
     ]),
     forwardRef(() => UserModule),
     forwardRef(() => AuthMmodule),
+    //MailerModule used to send email
+    MailerModule.forRoot({
+      transport: {
+        host: 'smtp.ethereal.email',
+        port: 587,
+        auth: {
+          user: 'edwin.mayert@ethereal.email',
+          pass: 't8vqWjY33BWHFUn9eN',
+        },
+      },
+      defaults: {
+        from: '"igor" <edwin.mayert@ethereal>',
+      },
+      template: {
+        dir: __dirname + '/templates',
+        adapter: new PugAdapter(),
+        options: {
+          strict: true,
+        },
+      },
+    }),
   ],
   controllers: [AppController],
   providers: [
