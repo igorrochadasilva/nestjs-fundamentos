@@ -10,9 +10,14 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { UserIdCheckMiddleware } from 'src/middlewares/use-id-check.middleware';
 import { AuthMmodule } from 'src/auth/auth.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserEntity } from './entity/user.entity';
 
 @Module({
-  imports: [PrismaModule, forwardRef(() => AuthMmodule)],
+  imports: [
+    forwardRef(() => AuthMmodule),
+    TypeOrmModule.forFeature([UserEntity]),
+  ],
   controllers: [UserController],
   providers: [UserService],
   exports: [UserService],
