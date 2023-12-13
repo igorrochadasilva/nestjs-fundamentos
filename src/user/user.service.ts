@@ -32,16 +32,8 @@ export class UserService {
     const salt = await bcrypt.genSalt();
 
     data.password = await bcrypt.hash(data.password, salt);
-    console.log(
-      '🚀 ~ file: user.service.ts:35 ~ UserService ~ create ~ data:',
-      data,
-    );
 
     const user = this.usersRepository.save(data);
-    console.log(
-      '🚀 ~ file: user.service.ts:37 ~ UserService ~ create ~ user:',
-      user,
-    );
 
     return user;
   }
