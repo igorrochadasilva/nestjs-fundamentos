@@ -36,11 +36,13 @@ export class UserController {
 
   @Get()
   async list() {
+    console.log('caiu aqui list?');
     return this.userService.list();
   }
 
   @Get(':id')
   async show(@ParamId() id: number) {
+    console.log('caiu no get by id');
     return this.userService.show(id);
   }
 

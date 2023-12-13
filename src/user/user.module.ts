@@ -1,4 +1,3 @@
-import { PrismaModule } from 'src/prisma/prisma.module';
 import {
   MiddlewareConsumer,
   Module,
