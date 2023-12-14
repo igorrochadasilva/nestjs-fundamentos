@@ -7,10 +7,11 @@ import {
 } from '@nestjs/common';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
-import { UserIdCheckMiddleware } from 'src/middlewares/use-id-check.middleware';
-import { AuthMmodule } from 'src/auth/auth.module';
+
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './entity/user.entity';
+import { AuthMmodule } from '../auth/auth.module';
+import { UserIdCheckMiddleware } from '../middlewares/use-id-check.middleware';
 
 @Module({
   imports: [
