@@ -14,7 +14,9 @@ import { UserEntity } from './user/entity/user.entity';
 //Thorttlermodule used to limit the number of requests
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      envFilePath: process.env.ENV === 'test' ? '.env.test' : '.env',
+    }),
     ThrottlerModule.forRoot([
       {
         ttl: 60,
