@@ -32,7 +32,7 @@ export class UserEntity {
   })
   birthAt?: Date;
   @CreateDateColumn()
-  createdAtw?: Date;
+  createdAt?: Date;
   @UpdateDateColumn()
   updatedAt?: Date;
   @Column({
