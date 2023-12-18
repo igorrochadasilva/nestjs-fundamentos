@@ -1,4 +1,3 @@
-import { UserService } from './../user/user.service';
 import {
   BadRequestException,
   Body,
@@ -28,11 +27,11 @@ import { join } from 'path';
 import { FileService } from '../file/file.service';
 import { AuthGuard } from '../guards/auth.guard';
 import { User } from '../decorators/user-decorator';
+import { UserEntity } from '../user/entity/user.entity';
 
 @Controller('auth')
 export class AuthController {
   constructor(
-    private readonly userService: UserService,
     private readonly authService: AuthService,
     private readonly fileService: FileService,
   ) {}
@@ -59,8 +58,8 @@ export class AuthController {
 
   @UseGuards(AuthGuard)
   @Post('me')
-  async me(@User() user, @Req() { tokenPayLoad }) {
-    return { user, tokenPayLoad };
+  async me(@User() user: UserEntity) {
+    return user;
   }
 
   @UseInterceptors(FileInterceptor('file'))
@@ -93,7 +92,7 @@ export class AuthController {
       throw new BadRequestException(e);
     }
 
-    return { sucess: true };
+    return photo;
   }
 
   @UseInterceptors(FilesInterceptor('files'))
