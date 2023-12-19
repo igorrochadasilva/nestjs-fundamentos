@@ -1,8 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
 import { userRepositoryMock } from '../testing/user-repository.mock';
-import { CreateUserDTO } from './dto/create-user.dto';
-import { Role } from '../enums/role.enum';
 import { userEntityList } from '../testing/user-entity-list.mock';
 import { createUserDTO } from '../testing/create-user-dto.mock';
 import { getRepositoryToken } from '@nestjs/typeorm';
